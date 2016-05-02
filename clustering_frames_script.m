@@ -1,4 +1,5 @@
 %Alireza_Day2_003, window_size = 6
+v = v1;
 frame_indices = 1:15:4500;
 frames = v(:,:,:,frame_indices);
 
@@ -11,6 +12,12 @@ k = 10;
 [idx,c] = kmeans(hist_m,k);
 
 overview = medfilt1(medfilt1(idx,11),11);
+
+figure(); 
+subplot(2,1,1); stem(idx); xlabel('Frame Index'); ylabel('Cluster Index');
+title('Original');
+subplot(2,1,2); stem(overview); xlabel('Frame Index'); ylabel('Cluster Index');
+title('After Median Filter');
 
 
 window_size = 6;

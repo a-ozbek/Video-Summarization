@@ -1,4 +1,4 @@
-function[rgb_im] = read_rgb_im(filename)
+function[rgb_im] = read_rgb_im(filename,width,height)
 
     % Get file ID for file
     fid=fopen(filename,'rb');
@@ -14,15 +14,15 @@ function[rgb_im] = read_rgb_im(filename)
 
     %Red
     red = pixel(1:end/3);
-    red = reshape(red,1280,960);
+    red = reshape(red,width,height);
     red = uint8(red');
     %Green
     green = pixel(end/3+1:end*(2/3));
-    green = reshape(green,1280,960);
+    green = reshape(green,width,height);
     green = uint8(green');
     %Blue
     blue = pixel(end*(2/3)+1:end);
-    blue = reshape(blue,1280,960);
+    blue = reshape(blue,width,height);
     blue = uint8(blue');
 
     rgb_im(:,:,1) = red;
